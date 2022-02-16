@@ -5,35 +5,36 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".SignUpAuthorActivity"
-    android:background="@drawable/bg">
+    android:background="@drawable/bg"
+    android:paddingHorizontal="30dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:id="@+id/Linear"
+        android:padding="15dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_DP"
-            app:civ_border_color="#8BC34A"
-            app:civ_border_width="4dp"
-            android:layout_width="98dp"
-            android:layout_height="98dp"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_home" />
+            android:src="@drawable/default_image" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:orientation="horizontal"
-            android:padding="20dp">
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btn_gallery"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginRight="10dp"
                 android:text="Gallery" />
 
             <Button
@@ -45,4 +46,95 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <EditText
+        android:id="@+id/edt_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Linear"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/edt_bg"
+        android:drawableStart="@drawable/ic_baseline_perm_identity_24"
+        android:drawablePadding="20dp"
+        android:hint="Enter your name"
+        android:inputType="textEmailAddress"
+        android:padding="15dp"
+        android:singleLine="true"
+        android:textColor="#05514A"
+        android:textColorHint="#05514A" />
+
+    <EditText
+        android:id="@+id/edt_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edt_name"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/edt_bg"
+        android:drawableStart="@drawable/ic_baseline_email_24"
+        android:drawablePadding="20dp"
+        android:hint="Enter your Email"
+        android:inputType="textEmailAddress"
+        android:padding="15dp"
+        android:singleLine="true"
+        android:textColor="#05514A"
+        android:textColorHint="#05514A" />
+
+
+    <EditText
+        android:id="@+id/edt_newPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edt_email"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/edt_bg"
+        android:drawableStart="@drawable/ic_baseline_lock_24"
+        android:drawablePadding="20dp"
+        android:hint="new Password"
+        android:inputType="textPassword"
+        android:padding="15dp"
+        android:singleLine="true"
+        android:textColor="#05514A"
+        android:textColorHint="#05514A" />
+
+    <EditText
+        android:id="@+id/edt_confirmPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edt_newPassword"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/edt_bg"
+        android:drawableStart="@drawable/ic_baseline_lock_24"
+        android:drawablePadding="20dp"
+        android:hint="confirm Password"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:padding="15dp"
+        android:singleLine="true"
+        android:textColor="#05514A"
+        android:textColorHint="#05514A" />
+
+    <android.widget.Button
+        android:id="@+id/btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edt_confirmPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/btn_bg"
+        android:text="Register"
+        android:textColor="#fff" />
+
+    <TextView
+        android:id="@+id/tv_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_register"
+        android:layout_centerHorizontal="true"
+        android:paddingStart="50dp"
+        android:text="Already have a account? Login"
+        android:textAllCaps="true"
+        android:textColor="#03A9F4" />
 </RelativeLayout>

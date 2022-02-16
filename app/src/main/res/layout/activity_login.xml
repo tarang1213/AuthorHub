@@ -44,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edt_bg"
-            android:drawableLeft="@drawable/ic_baseline_email_24"
+            android:drawableStart="@drawable/ic_baseline_email_24"
             android:drawablePadding="20dp"
             android:hint="Email"
             android:inputType="textEmailAddress"
@@ -61,7 +61,7 @@
             android:layout_below="@id/edt_email"
             android:layout_marginTop="30dp"
             android:background="@drawable/edt_bg"
-            android:drawableLeft="@drawable/ic_baseline_lock_24"
+            android:drawableStart="@drawable/ic_baseline_lock_24"
             android:drawablePadding="20dp"
             android:hint="Password"
             android:imeOptions="actionDone"
@@ -100,7 +100,7 @@
                 android:layout_weight="1"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/btn_bg"
-                android:text="Sign in as author" />
+                android:text="Sign up as author" />
 
             <Button
                 android:id="@+id/btn_signInUser"
@@ -108,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/btn_bg"
-                android:text="Sign in as user" />
+                android:text="Sign up as user" />
 
         </LinearLayout>
     </RelativeLayout>
