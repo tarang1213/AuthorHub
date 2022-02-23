@@ -78,7 +78,13 @@ public class SignUpUserActivity extends AppCompatActivity {
                     edtNewPassword.setError("Enter password");
                 }
                 else if(strNewPassword.length()<8){
-                    edtNewPassword.setError("Enter valid password");
+                    edtNewPassword.setError("password must have 8 length");
+
+                }else if(strConfirmPassword.equals("")){
+                    edtNewPassword.setError("Enter password");
+                }
+                else if(strConfirmPassword.length()<8){
+                    edtNewPassword.setError("password must have 8 length");
 
                 }else if(!strNewPassword.equals(strConfirmPassword)){
                     edtConfirmPassword.setError("Confirm password does not match with new password");
@@ -110,7 +116,7 @@ public class SignUpUserActivity extends AppCompatActivity {
             Uri uri = data.getData();
             circleImageView.setImageURI(uri);
         }
-        if(requestCode==12)
+        if(requestCode==12 && resultCode==RESULT_OK)
         {
             assert data != null;
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");

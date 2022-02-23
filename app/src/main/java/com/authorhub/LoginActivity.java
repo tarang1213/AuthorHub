@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
 //                    Toast.makeText(MainActivity.this, "Enter password ", Toast.LENGTH_SHORT).show();
                 }
                 else if(strPassword.length()<8){
-                    edtPassword.setError("Enter valid password");
+                    edtPassword.setError("password must have 8 length");
 //                    Toast.makeText(MainActivity.this, "Enter valid password ", Toast.LENGTH_SHORT).show();
                 }
                 else {
