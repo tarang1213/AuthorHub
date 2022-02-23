@@ -11,12 +11,12 @@
         android:id="@+id/img_logo"
         android:layout_width="96dp"
         android:layout_height="96dp"
-        android:layout_gravity="center"
         android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:src="@drawable/ic_home"
-        app:civ_border_width="3dp"
-        app:civ_border_color="#FF6200EE"/>
+        app:civ_border_color="#FF6200EE"
+        app:civ_border_width="3dp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -104,7 +104,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/btn_bg"
                 android:text="Sign up \n as author"
-                android:textColor="#fff"/>
+                android:textColor="#fff" />
 
             <android.widget.Button
                 android:id="@+id/btn_signInUser"
@@ -113,7 +113,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/btn_bg"
                 android:text="Sign up \n as user"
-                android:textColor="#fff"/>
+                android:textColor="#fff" />
 
         </LinearLayout>
     </RelativeLayout>
