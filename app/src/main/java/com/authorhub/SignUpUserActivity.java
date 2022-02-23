@@ -97,6 +97,8 @@ public class SignUpUserActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+
     }
 
     @Override
@@ -115,4 +117,5 @@ public class SignUpUserActivity extends AppCompatActivity {
             circleImageView.setImageBitmap(bitmap);
         }
     }
-}
+
+    }

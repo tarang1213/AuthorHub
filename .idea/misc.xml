@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/drawable/bg.xml" value="0.112" />
+        <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/drawable/btn_bg.xml" value="0.112" />
+        <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/drawable/edt_bg.xml" value="0.112" />
+        <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/layout/activity_sign_up_author.xml" value="0.18425925925925926" />
+        <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/layout/activity_sign_up_user.xml" value="0.18425925925925926" />
         <entry key="..\:/Users/taran/Desktop/android/AuthorHub/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1765" />
         <entry key="..\:/Users/taran/Desktop/android/AuthorHub/app/src/main/res/drawable/bg.xml" value="0.26" />
         <entry key="..\:/Users/taran/Desktop/android/AuthorHub/app/src/main/res/drawable/btn_bg.xml" value="0.26" />
