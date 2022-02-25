@@ -18,19 +18,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AuthorHub">
         <activity
-            android:name=".SignUpUserActivity"
+            android:name=".activity.NavHomeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_nav_home"
+            android:theme="@style/Theme.AuthorHub.NoActionBar" />
+        <activity
+            android:name=".activity.SignUpUserActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUpAuthorActivity"
+            android:name=".activity.SignUpAuthorActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".activity.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

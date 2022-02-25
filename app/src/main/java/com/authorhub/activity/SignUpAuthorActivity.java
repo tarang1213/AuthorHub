@@ -1,4 +1,4 @@
-package com.authorhub;
+package com.authorhub.activity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,9 +13,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.authorhub.R;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class SignUpUserActivity extends AppCompatActivity {
+public class SignUpAuthorActivity extends AppCompatActivity {
 
     EditText edtName,edtEmail,edtNewPassword,edtConfirmPassword;
     TextView tvLogin;
@@ -27,7 +29,7 @@ public class SignUpUserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up_user);
+        setContentView(R.layout.activity_sign_up_author);
         edtName=findViewById(R.id.edt_name);
         edtEmail=findViewById(R.id.edt_email);
         edtNewPassword=findViewById(R.id.edt_newPassword);
@@ -89,7 +91,7 @@ public class SignUpUserActivity extends AppCompatActivity {
                 }else if(!strNewPassword.equals(strConfirmPassword)){
                     edtConfirmPassword.setError("Confirm password does not match with new password");
                 }else{
-                    Intent i = new Intent(SignUpUserActivity.this,LoginActivity.class);
+                    Intent i = new Intent(SignUpAuthorActivity.this,LoginActivity.class);
                     startActivity(i);
                 }
 
@@ -99,7 +101,7 @@ public class SignUpUserActivity extends AppCompatActivity {
         tvLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(SignUpUserActivity.this,LoginActivity.class);
+                Intent i = new Intent(SignUpAuthorActivity.this,LoginActivity.class);
                 startActivity(i);
             }
         });
@@ -123,5 +125,4 @@ public class SignUpUserActivity extends AppCompatActivity {
             circleImageView.setImageBitmap(bitmap);
         }
     }
-
-    }
+}

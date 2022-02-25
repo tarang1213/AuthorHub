@@ -1,10 +1,12 @@
-package com.authorhub;
+package com.authorhub.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.authorhub.R;
 
 public class MainActivity extends AppCompatActivity {
 

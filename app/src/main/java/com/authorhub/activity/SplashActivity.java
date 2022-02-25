@@ -1,11 +1,16 @@
-package com.authorhub;
+package com.authorhub.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.authorhub.R;
+import com.authorhub.utils.GifImageView;
+
+@SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
 
     int time=2000;
