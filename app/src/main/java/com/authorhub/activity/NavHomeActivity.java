@@ -9,6 +9,10 @@ import android.view.Menu;
 import android.widget.TextView;
 
 import com.authorhub.R;
+import com.authorhub.fragments.AboutUsFragment;
+import com.authorhub.fragments.ContactUsFragment;
+import com.authorhub.fragments.HomeFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -19,7 +23,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
 
 public class NavHomeActivity extends AppCompatActivity {
@@ -27,6 +33,7 @@ public class NavHomeActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     NavigationView navigationView;
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +43,7 @@ public class NavHomeActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.toolbar);
         navigationView = findViewById(R.id.nav_view);
+        bottomNavigationView = findViewById(R.id.bottom_view);
 
 
         SharedPreferences sharedPreferences = getSharedPreferences("MyAPP_Internship", MODE_PRIVATE);
@@ -44,13 +52,16 @@ public class NavHomeActivity extends AppCompatActivity {
 
         View headerView = navigationView.getHeaderView(0);
         TextView tvEmail = headerView.findViewById(R.id.tv_email);
-        tvEmail.setText(strEmail);
+        //tvEmail.setText(strEmail);
 
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
                 toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.setDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         loadDashboard();
+
+
+
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -66,10 +77,10 @@ public class NavHomeActivity extends AppCompatActivity {
                     fragmentTransaction.replace(R.id.frame, fragment);
                     fragmentTransaction.commit();
                     toolbar.setTitle("Home");
-                } else if (id == R.id.nav_gallery) {
+                } else if (id == R.id.nav_about_us) {
 
-                    toolbar.setTitle("Gallery");
-                    fragment = new GalleryFragment();
+                    toolbar.setTitle("About Us");
+                    fragment = new AboutUsFragment();
                     fragmentTransaction.replace(R.id.frame, fragment);
                     fragmentTransaction.commit();
 
@@ -80,16 +91,6 @@ public class NavHomeActivity extends AppCompatActivity {
                     fragmentTransaction.replace(R.id.frame, fragment);
                     fragmentTransaction.commit();
 
-                }else  if(id == R.id.item_logout){
-
-                    SharedPreferences sharedPreferences = getSharedPreferences("MyAPP_Internship",MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.remove("KEY_PREF_EMAIL");
-                    editor.remove("KEY_PREF_Password");
-                    editor.commit();
-                    Intent i = new Intent(NavHomeActivity.this, MainActivity.class);
-                    startActivity(i);
-                    finish();
                 }
 
                 drawerLayout.closeDrawer(GravityCompat.START);
@@ -97,7 +98,10 @@ public class NavHomeActivity extends AppCompatActivity {
             }
         });
 
+
+
     }
+
     private void loadDashboard() {
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();

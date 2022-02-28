@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.authorhub.R;
 import com.authorhub.models.BookModel;
 
 

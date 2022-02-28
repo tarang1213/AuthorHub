@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.myappinternship.R;
-import com.myappinternship.models.BookModel;
+import com.authorhub.R;
+import com.authorhub.models.BookModel;
 
 import java.util.ArrayList;
 

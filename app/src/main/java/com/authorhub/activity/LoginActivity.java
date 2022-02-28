@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.authorhub.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -20,11 +22,15 @@ public class LoginActivity extends AppCompatActivity {
     ImageView imgLogo;
     Button btnSignInAuthor,btnSignInUser;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        firebaseDatabase=FirebaseDatabase.getInstance("https://authorhub-750d5-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        databaseReference=firebaseDatabase.getReference("UserTable");
         edtEmail = findViewById(R.id.edt_email);
         edtPassword=findViewById(R.id.edt_password);
         btnLogin = findViewById(R.id.btn_login);
@@ -71,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else {
 //                    imgLogo.setImageResource(R.drawable.icon_2);
-
+                    databaseReference.setValue("Hello");
                     Intent i = new Intent(LoginActivity.this,MainActivity.class);
                     i.putExtra("KEY_EMAIL",strEmail);
                     startActivity(i);

@@ -13,7 +13,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.authorhub.R;
 import com.authorhub.adapters.BookAdapter;
-import com.authorhub.databinding.FragmentHomeBinding;
 import com.authorhub.models.BookModel;
 
 import java.util.ArrayList;
@@ -27,7 +26,7 @@ public class HomeFragment extends Fragment {
     int[] imgBook = {R.drawable.ic_home, R.drawable.ic_home, R.drawable.ic_home,
             R.drawable.ic_home, R.drawable.ic_home, R.drawable.ic_home, R.drawable.ic_home, R.drawable.ic_home};
 
-    //ArrayList<BookModel> bookModelArrayList;
+    ArrayList<BookModel> bookModelArrayList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
