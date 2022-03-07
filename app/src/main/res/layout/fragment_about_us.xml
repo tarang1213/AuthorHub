@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="#9EFFCDD2"
+    android:background="@drawable/bg"
     tools:context=".fragments.AboutUsFragment"
     android:padding="5dp" >
 

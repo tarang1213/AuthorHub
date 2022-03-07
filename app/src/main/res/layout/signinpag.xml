@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:gravity="center"
+    android:padding="30dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_login"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+
+        <android.widget.Button
+            android:id="@+id/btn_signInAuthor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_bg"
+            android:text="Sign up \n as author"
+            android:textColor="#fff" />
+
+        <android.widget.Button
+            android:id="@+id/btn_signInUser"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_bg"
+            android:text="Sign up \n as user"
+            android:textColor="#fff" />
+
+
+</LinearLayout>
+</LinearLayout>

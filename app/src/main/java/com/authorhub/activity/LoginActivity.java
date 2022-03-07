@@ -3,56 +3,82 @@ package com.authorhub.activity;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.authorhub.R;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+//import com.google.firebase.database.DatabaseReference;
+//import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity {
 
     EditText edtEmail,edtPassword;
     Button btnLogin;
+    TextView tvsignin;
     ImageView imgLogo;
     Button btnSignInAuthor,btnSignInUser;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+   // FirebaseDatabase firebaseDatabase;
+    //DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        firebaseDatabase=FirebaseDatabase.getInstance("https://authorhub-750d5-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        databaseReference=firebaseDatabase.getReference("UserTable");
         edtEmail = findViewById(R.id.edt_email);
         edtPassword=findViewById(R.id.edt_password);
         btnLogin = findViewById(R.id.btn_login);
         imgLogo  = findViewById(R.id.img_logo);
-        btnSignInAuthor = findViewById(R.id.btn_signInAuthor);
-        btnSignInUser = findViewById(R.id.btn_signInUser);
+        tvsignin = findViewById(R.id.tv_signin);
 
-        btnSignInUser.setOnClickListener(new View.OnClickListener() {
+
+        tvsignin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent i = new Intent(LoginActivity.this,SignUpUserActivity.class);
-                startActivity(i);
+            public void onClick(View v){
+
+                LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View fpView = layoutInflater.inflate(R.layout.signinpag,null);
+                btnSignInAuthor =fpView.findViewById(R.id.btn_signInAuthor);
+                btnSignInUser = fpView.findViewById(R.id.btn_signInUser);
+                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                AlertDialog alertDialog = builder.create();
+                alertDialog.setView(fpView);
+                alertDialog.show();
+
+
+                btnSignInUser.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent i = new Intent(LoginActivity.this,SignUpUserActivity.class);
+                        startActivity(i);
+                    }
+                });
+
+                btnSignInAuthor.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent i = new Intent(LoginActivity.this,SignUpAuthorActivity.class);
+                        startActivity(i);
+                    }
+                });
+
+
+
             }
         });
 
-        btnSignInAuthor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(LoginActivity.this,SignUpAuthorActivity.class);
-                startActivity(i);
-            }
-        });
+
+
+
 
 
 
@@ -77,8 +103,8 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else {
 //                    imgLogo.setImageResource(R.drawable.icon_2);
-                    databaseReference.setValue("Hello");
-                    Intent i = new Intent(LoginActivity.this,MainActivity.class);
+                  //  databaseReference.setValue("Hello");
+                    Intent i = new Intent(LoginActivity.this,NavHomeActivity.class);
                     i.putExtra("KEY_EMAIL",strEmail);
                     startActivity(i);
 
@@ -106,5 +132,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         builder.show();
+    }
+
+    private class textview {
     }
 }

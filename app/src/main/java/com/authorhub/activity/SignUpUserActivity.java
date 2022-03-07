@@ -1,17 +1,22 @@
 package com.authorhub.activity;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.authorhub.R;
 
@@ -37,10 +42,61 @@ public class SignUpUserActivity extends AppCompatActivity {
         btnRegister=findViewById(R.id.btn_register);
         tvLogin=findViewById(R.id.tv_login);
         circleImageView = findViewById(R.id.img_DP);
-        btnGallery = findViewById(R.id.btn_gallery);
-        btnCamera = findViewById(R.id.btn_camera);
 
-        btnGallery.setOnClickListener(new View.OnClickListener() {
+
+        circleImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View fpView = layoutInflater.inflate(R.layout.raw_dp, null);
+                ImageView imgGallery = fpView.findViewById(R.id.img_gallery);
+                ImageView imgCamera = fpView.findViewById(R.id.img_camera);
+                AlertDialog.Builder builder = new AlertDialog.Builder(SignUpUserActivity.this);
+                AlertDialog alertDialog = builder.create();
+                alertDialog.setView(fpView);
+                alertDialog.show();
+
+                imgGallery.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(SignUpUserActivity.this, "Submit", Toast.LENGTH_SHORT).show();
+
+                        if (alertDialog.isShowing()) {
+
+                            alertDialog.dismiss();
+                        }
+
+
+                        Intent i = new Intent();
+                        i.setType("image/*");
+                        i.setAction(Intent.ACTION_PICK);
+                        startActivityForResult(i, 11);
+                    }
+                });
+
+                imgCamera.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(SignUpUserActivity.this, "Submit", Toast.LENGTH_SHORT).show();
+
+                        if (alertDialog.isShowing()){
+                            alertDialog.dismiss();
+                        }
+
+                        Intent i = new Intent();
+                        i.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+                        startActivityForResult(i,12);
+                    }
+                });
+
+
+
+            }
+        });
+
+
+        /*btnGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i =new Intent();
@@ -57,7 +113,7 @@ public class SignUpUserActivity extends AppCompatActivity {
                 i.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(i,12);
             }
-        });
+        });*/
 
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
@@ -83,28 +139,28 @@ public class SignUpUserActivity extends AppCompatActivity {
                     edtNewPassword.setError("password must have 8 length");
 
                 }else if(strConfirmPassword.equals("")){
-                    edtNewPassword.setError("Enter password");
+                    edtConfirmPassword.setError("Enter password");
                 }
                 else if(strConfirmPassword.length()<8){
-                    edtNewPassword.setError("password must have 8 length");
+                    edtConfirmPassword.setError("password must have 8 length");
 
                 }else if(!strNewPassword.equals(strConfirmPassword)){
                     edtConfirmPassword.setError("Confirm password does not match with new password");
                 }else{
-                    Intent i = new Intent(SignUpUserActivity.this,LoginActivity.class);
+                    Intent i = new Intent(SignUpUserActivity.this,NavHomeActivity.class);
                     startActivity(i);
                 }
 
             }
         });
 
-        tvLogin.setOnClickListener(new View.OnClickListener() {
+        /*tvLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(SignUpUserActivity.this,LoginActivity.class);
                 startActivity(i);
             }
-        });
+        });*/
 
 
     }
@@ -126,4 +182,4 @@ public class SignUpUserActivity extends AppCompatActivity {
         }
     }
 
-    }
+}
