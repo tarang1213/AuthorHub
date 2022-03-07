@@ -1,48 +1,77 @@
 package com.authorhub.fragments;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.authorhub.R;
-import com.authorhub.adapters.BookAdapter;
-import com.authorhub.models.BookModel;
-
-import java.util.ArrayList;
+import com.authorhub.fragments.ContactUsFragment;
+import com.authorhub.fragments.HomeFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeFragment extends Fragment {
 
-    ListView listView;
+    BottomNavigationView bottomNavigationView;
+  //  Toolbar toolbar;
+    Fragment fragment = null;
 
-    String[] strBook = {"Book 1", "Book 2", "Book 3", "Book 4", "Book 5", "Book 6", "Book 7", "Book 8"};
-
-    int[] imgBook = {R.drawable.ic_home, R.drawable.ic_home, R.drawable.ic_home,
-            R.drawable.ic_home, R.drawable.ic_home, R.drawable.ic_home, R.drawable.ic_home, R.drawable.ic_home};
-
-    ArrayList<BookModel> bookModelArrayList;
-
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        listView = rootView.findViewById(R.id.list_view);
-        bookModelArrayList = new ArrayList<BookModel>();
-        for (int i = 0; i < strBook.length; i++) {
-            BookModel bookModel = new BookModel(strBook[i], imgBook[i]);
-            bookModelArrayList.add(bookModel);
-        }
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
 
-        BookAdapter bookAdapter = new BookAdapter(getActivity(),bookModelArrayList);
-        listView.setAdapter(bookAdapter);
+        View view = inflater.inflate(R.layout.fragment_home,null);
+        bottomNavigationView = view.findViewById(R.id.bottom_view);
+        //toolbar = view.findViewById(R.id.toolbar);
+        loadDashboard();
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+
+                if (id == R.id.home){
+
+                    fragment = new HomeFragment1();
+                    fragmentTransaction.replace(R.id.frame1,fragment);
+                    fragmentTransaction.commit();
+                 //   toolbar.setTitle("Home");
+
+                } else if (id == R.id.profile){
+
+                  //  toolbar.setTitle("Profile");
+                    fragment = new ContactUsFragment();
+                    fragmentTransaction.replace(R.id.frame1,fragment);
+                    fragmentTransaction.commit();
+
+                }
+                return true;
+
+            }
+        });
+        return view;
 
 
-        return rootView;
+
+    }
+
+    private void loadDashboard() {
+
+        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+        fragment = new HomeFragment1();
+        fragmentTransaction.replace(R.id.frame1, fragment);
+        fragmentTransaction.commit();
+
     }
 }

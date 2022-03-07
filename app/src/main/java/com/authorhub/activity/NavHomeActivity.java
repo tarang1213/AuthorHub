@@ -12,6 +12,7 @@ import com.authorhub.R;
 import com.authorhub.fragments.AboutUsFragment;
 import com.authorhub.fragments.ContactUsFragment;
 import com.authorhub.fragments.HomeFragment;
+import com.authorhub.fragments.HomeFragment1;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -20,6 +21,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,7 +35,11 @@ public class NavHomeActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     NavigationView navigationView;
-    BottomNavigationView bottomNavigationView;
+
+    Fragment fragment;
+    FragmentManager fragmentManager;
+    FragmentTransaction fragmentTransaction=null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +49,7 @@ public class NavHomeActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.toolbar);
         navigationView = findViewById(R.id.nav_view);
-        bottomNavigationView = findViewById(R.id.bottom_view);
+
 
 
         SharedPreferences sharedPreferences = getSharedPreferences("MyAPP_Internship", MODE_PRIVATE);
@@ -68,8 +74,8 @@ public class NavHomeActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                Fragment fragment = null;
-                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentManager = getSupportFragmentManager();
+               fragmentTransaction = fragmentManager.beginTransaction();
 
                 if (id == R.id.nav_home) {
 
@@ -102,10 +108,12 @@ public class NavHomeActivity extends AppCompatActivity {
 
     }
 
-    private void loadDashboard() {
+    private void loadDashboard()
+    {
 
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        HomeFragment fragment = new HomeFragment();
+        fragment = new HomeFragment();
+        fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame, fragment);
         fragmentTransaction.commit();
         toolbar.setTitle("Home");

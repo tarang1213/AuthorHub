@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import com.authorhub.R;
 import com.authorhub.fragments.ContactUsFragment;
 import com.authorhub.fragments.HomeFragment;
+import com.authorhub.fragments.HomeFragment1;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class BottomActivity extends AppCompatActivity {
@@ -36,7 +37,7 @@ public class BottomActivity extends AppCompatActivity {
 
                 if (id == R.id.home){
 
-                    fragment = new HomeFragment();
+                    fragment = new HomeFragment1();
                     fragmentTransaction.replace(R.id.frame,fragment);
                     fragmentTransaction.commit();
                     toolbar.setTitle("Home");
