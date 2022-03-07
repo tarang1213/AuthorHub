@@ -29,6 +29,7 @@
         android:textColor="#fff"
         android:textSize="30sp"/>
 
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -83,12 +84,24 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="40dp"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/btn_bg"
             android:text="Login"
             android:textColor="#fff" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/tv_signin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_login"
+            android:layout_centerHorizontal="true"
+            android:paddingStart="50dp"
+            android:text="Need an account? Signin"
+            android:textAllCaps="true"
+            android:textColor="#FDFCFC" />
+
+
+        <!--  <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btn_login"
@@ -115,7 +128,9 @@
                 android:text="Sign up \n as user"
                 android:textColor="#fff" />
 
-        </LinearLayout>
+        </LinearLayout>-->
     </RelativeLayout>
+
+
 
 </RelativeLayout>

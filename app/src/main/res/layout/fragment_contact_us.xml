@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#9EFFCDD2"
+    android:background="#637D5EB6"
     android:orientation="vertical"
     android:paddingTop="?actionBarSize"
     android:paddingBottom="10dp"
