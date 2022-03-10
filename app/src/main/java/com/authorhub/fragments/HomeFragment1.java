@@ -14,8 +14,14 @@ import androidx.lifecycle.ViewModelProvider;
 import com.authorhub.R;
 import com.authorhub.adapters.BookAdapter;
 import com.authorhub.models.BookModel;
+import com.authorhub.models.SliderItem;
+import com.google.android.material.tabs.TabLayout;
+import androidx.viewpager.widget.ViewPager;
+import com.authorhub.adapters.The_Slide_items_Pager_Adapter;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.TimerTask;
 
 public class HomeFragment1 extends Fragment {
 
@@ -27,6 +33,17 @@ public class HomeFragment1 extends Fragment {
             R.drawable.ic_home, R.drawable.ic_home, R.drawable.ic_home, R.drawable.ic_home, R.drawable.ic_home};
 
     ArrayList<BookModel> bookModelArrayList;
+
+    private List<SliderItem> listItems;
+    private ViewPager page;
+    private TabLayout tabLayout;
+
+    /*Slider Code*/
+    String strImag[]= {"bithday","anniversary gift hamper"," couple hamper","gift box","surpise"};
+
+    int imgData[] = {R.drawable.slideimg1,R.drawable.slideimg2,
+            R.drawable.slideimg3,R.drawable.slideimg4,R.drawable.slidimg5};
+    private ArrayList<SliderItem> sliderItemArrayList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState)
@@ -43,6 +60,44 @@ public class HomeFragment1 extends Fragment {
         BookAdapter bookAdapter = new BookAdapter(getActivity(),bookModelArrayList);
         listView.setAdapter(bookAdapter);
 
+        page = rootView.findViewById(R.id.my_pager) ;
+        tabLayout = rootView.findViewById(R.id.my_tablayout);
+
+        // Make a copy of the slides you'll be presenting.
+        listItems = new ArrayList<SliderItem>() ;
+
+
+        for (int i = 0; strImag.length > i; i++) {
+            SliderItem sliderItem = new SliderItem(strImag[i], imgData[i]);
+            listItems.add(sliderItem);
+        }
+
+        The_Slide_items_Pager_Adapter itemsPager_adapter = new The_Slide_items_Pager_Adapter(getActivity(), listItems);
+        page.setAdapter(itemsPager_adapter);
+
+        // The_slide_timer
+        java.util.Timer timer = new java.util.Timer();
+        timer.scheduleAtFixedRate(new The_slide_timer(),2000,3000);
+        tabLayout.setupWithViewPager(page,true);
+
         return rootView;
+    }
+
+
+    private class The_slide_timer extends TimerTask {
+        @Override
+        public void run() {
+
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (page.getCurrentItem()< listItems.size()-1) {
+                        page.setCurrentItem(page.getCurrentItem()+1);
+                    }
+                    else
+                        page.setCurrentItem(0);
+                }
+            });
+        }
     }
 }

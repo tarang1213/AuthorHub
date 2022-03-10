@@ -52,13 +52,6 @@ public class NavHomeActivity extends AppCompatActivity {
 
 
 
-        SharedPreferences sharedPreferences = getSharedPreferences("MyAPP_Internship", MODE_PRIVATE);
-        String strEmail = sharedPreferences.getString("KEY_PREF_EMAIL", "");
-
-
-        View headerView = navigationView.getHeaderView(0);
-        TextView tvEmail = headerView.findViewById(R.id.tv_email);
-        //tvEmail.setText(strEmail);
 
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
                 toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -67,7 +60,13 @@ public class NavHomeActivity extends AppCompatActivity {
         loadDashboard();
 
 
+        SharedPreferences sharedPreferences = getSharedPreferences("MyAPP_AUTHOR", MODE_PRIVATE);
+        String strEmail = sharedPreferences.getString("KEY_PREF_EMAIL", "");
 
+
+        View headerView = navigationView.getHeaderView(0);
+        TextView tvEmail = headerView.findViewById(R.id.tv_email);
+        tvEmail.setText(strEmail);
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -97,7 +96,19 @@ public class NavHomeActivity extends AppCompatActivity {
                     fragmentTransaction.replace(R.id.frame, fragment);
                     fragmentTransaction.commit();
 
+                }else  if(id == R.id.nav_logout){
+
+                    SharedPreferences sharedPreferences = getSharedPreferences("MyAPP_GIFT",MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.remove("KEY_PREF_EMAIL");
+                    editor.remove("KEY_PREF_Password");
+                    editor.commit();
+                    Intent i = new Intent(NavHomeActivity.this, LoginActivity.class);
+                    startActivity(i);
+                   // finish();
                 }
+
+
 
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;

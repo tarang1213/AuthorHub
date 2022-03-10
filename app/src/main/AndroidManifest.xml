@@ -18,6 +18,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AuthorHub">
         <activity
+            android:name=".activity.CatDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.CatDisplayActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.CatActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.BottomActivity"
             android:exported="false" />
         <activity
