@@ -1,14 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.ProfileFragment">
+    android:background="#637D5EB6">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/Linear"
+        android:padding="15dp"
+        android:gravity="center">
 
-</FrameLayout>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_DP"
+            android:layout_width="117dp"
+            android:layout_height="103dp"
+            android:src="@drawable/default_image" />
+
+        <TextView
+            android:id="@+id/PrName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/black"
+            android:text="@string/app_name" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_Pemail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Linear"
+        android:layout_marginTop="50dp"
+        android:paddingHorizontal="10dp"
+        android:text="Email "
+        android:textSize="20dp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/PrEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_Pemail"
+        android:layout_marginTop="5dp"
+        android:text="@string/email_address"
+        android:textSize="20sp"
+        android:paddingHorizontal="10dp"/>
+
+
+    <TextView
+        android:id="@+id/tv_about"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_Pemail"
+        android:layout_marginTop="50dp"
+        android:paddingHorizontal="10dp"
+        android:text="About "
+        android:textSize="20dp"
+        android:textColor="@color/black"/>
+
+    <Button
+        android:id="@+id/btn_editprofile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_about"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/btn_bg"
+        android:text="Edit Profile" />
+
+    <Button
+        android:id="@+id/btn_Signout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_editprofile"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/btn_bg"
+        android:text="sign out" />
+
+
+</RelativeLayout>

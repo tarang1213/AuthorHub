@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.content.SharedPreferences;
 import android.widget.Toast;
 
 import com.authorhub.R;
@@ -104,6 +105,15 @@ public class LoginActivity extends AppCompatActivity {
                 else {
 //                    imgLogo.setImageResource(R.drawable.icon_2);
                   //  databaseReference.setValue("Hello");
+
+
+                    SharedPreferences sharedPreferences = getSharedPreferences("MyAPP_AUTHOR", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("KEY_PREF_EMAIL", strEmail);
+                    editor.putString("KEY_PREF_Password", strPassword);
+                    editor.commit();
+
+
                     Intent i = new Intent(LoginActivity.this,NavHomeActivity.class);
                     i.putExtra("KEY_EMAIL",strEmail);
                     startActivity(i);
