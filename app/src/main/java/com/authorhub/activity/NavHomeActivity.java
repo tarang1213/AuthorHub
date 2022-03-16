@@ -81,7 +81,7 @@ public class NavHomeActivity extends AppCompatActivity {
                     fragment = new HomeFragment();
                     fragmentTransaction.replace(R.id.frame, fragment);
                     fragmentTransaction.commit();
-                    toolbar.setTitle("Home");
+                  //  toolbar.setTitle("Home");
                 } else if (id == R.id.nav_about_us) {
 
                     toolbar.setTitle("About Us");
@@ -127,7 +127,7 @@ public class NavHomeActivity extends AppCompatActivity {
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame, fragment);
         fragmentTransaction.commit();
-        toolbar.setTitle("Home");
+     //   toolbar.setTitle("Home");
 
     }
 }

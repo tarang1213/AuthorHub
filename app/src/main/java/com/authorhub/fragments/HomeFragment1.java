@@ -8,6 +8,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -50,8 +51,9 @@ public class HomeFragment1 extends Fragment {
     {
         View rootView = inflater.inflate(R.layout.fragment_home1, container, false);
         listView = rootView.findViewById(R.id.list_view);
-        bookModelArrayList = new ArrayList<BookModel>();
 
+        getActivity().setTitle("Home11");
+        bookModelArrayList = new ArrayList<BookModel>();
         for (int i = 0; i < strBook.length; i++) {
             BookModel bookModel = new BookModel(strBook[i], imgBook[i]);
             bookModelArrayList.add(bookModel);
@@ -83,21 +85,28 @@ public class HomeFragment1 extends Fragment {
         return rootView;
     }
 
-
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        getActivity().setTitle("Home1");
+    }
     private class The_slide_timer extends TimerTask {
         @Override
         public void run() {
 
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    if (page.getCurrentItem()< listItems.size()-1) {
-                        page.setCurrentItem(page.getCurrentItem()+1);
+            if (getActivity() != null) {
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (page.getCurrentItem() < listItems.size() - 1) {
+                            page.setCurrentItem(page.getCurrentItem() + 1);
+                        } else
+                            page.setCurrentItem(0);
                     }
-                    else
-                        page.setCurrentItem(0);
-                }
-            });
+                });
+            }
         }
     }
 }
+

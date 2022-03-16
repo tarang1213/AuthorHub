@@ -144,6 +144,5 @@ public class LoginActivity extends AppCompatActivity {
         builder.show();
     }
 
-    private class textview {
-    }
+
 }
