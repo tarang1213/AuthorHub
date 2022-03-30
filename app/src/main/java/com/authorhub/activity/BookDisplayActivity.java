@@ -3,6 +3,7 @@ package com.authorhub.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
 
@@ -30,6 +31,8 @@ public class BookDisplayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_display);
         listView = findViewById(R.id.list_view);
+        Intent i=getIntent();
+        String CatName=i.getStringExtra("KEY_CAT");
 
         bookDetailsModelArrayList = new ArrayList<BookDetailsModel>();
         firebaseDatabase = FirebaseDatabase.getInstance("https://authorhub-750d5-default-rtdb.asia-southeast1.firebasedatabase.app/");
@@ -42,7 +45,10 @@ public class BookDisplayActivity extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
 
                     BookDetailsModel bookDetailsModel = dataSnapshot1.getValue(BookDetailsModel.class);
-                    bookDetailsModelArrayList.add(bookDetailsModel);
+                    if(bookDetailsModel.getBookCat().equals(CatName)){
+                        bookDetailsModelArrayList.add(bookDetailsModel);
+                    }
+
                 }
 
 

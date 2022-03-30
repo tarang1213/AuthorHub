@@ -79,7 +79,9 @@ public class SearchAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
 
+                String catName = categoryModelArrayList.get(position).getCat_name();
                 Intent i = new Intent(context, BookDisplayActivity.class);
+                i.putExtra("KEY_CAT",catName);
                 context.startActivity(i);
                           }
         });

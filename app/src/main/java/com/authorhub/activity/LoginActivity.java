@@ -21,6 +21,7 @@ import com.authorhub.R;
 import com.authorhub.models.RegisterModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -128,7 +129,7 @@ public class LoginActivity extends AppCompatActivity {
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                                         RegisterModel registerModel = dataSnapshot.getValue(RegisterModel.class);
-                                        String loginEmail = registerModel.getUser_email();
+                                        //String loginEmail = registerModel.getUser_email();
 
                                         SharedPreferences sharedPreferences = getSharedPreferences("MyAPP_AUTHOR", MODE_PRIVATE);
                                         SharedPreferences.Editor editor = sharedPreferences.edit();
