@@ -21,7 +21,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class HomeFragment extends Fragment {
 
     BottomNavigationView bottomNavigationView;
-  //  Toolbar toolbar;
+    Toolbar toolbar;
     Fragment fragment = null;
 
     @Nullable
@@ -31,7 +31,7 @@ public class HomeFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_home,null);
         bottomNavigationView = view.findViewById(R.id.bottom_view);
-        //toolbar = view.findViewById(R.id.toolbar);
+        toolbar = getActivity().findViewById(R.id.toolbar);
         loadDashboard();
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -43,14 +43,23 @@ public class HomeFragment extends Fragment {
 
                 if (id == R.id.home){
 
+
                     fragment = new HomeFragment1();
                     fragmentTransaction.replace(R.id.frame1,fragment);
                     fragmentTransaction.commit();
-                 //   toolbar.setTitle("Home");
+                    toolbar.setTitle("Home");
 
-                } else if (id == R.id.profile){
+                } else if (id == R.id.search){
 
-                  //  toolbar.setTitle("Profile");
+                    toolbar.setTitle("Search");
+                    fragment = new SearchFragment();
+                    fragmentTransaction.replace(R.id.frame1,fragment);
+                    fragmentTransaction.commit();
+
+                }else if (id == R.id.profile){
+                    getActivity().setTitle("profile");
+
+                    toolbar.setTitle("Profile");
                     fragment = new ContactUsFragment();
                     fragmentTransaction.replace(R.id.frame1,fragment);
                     fragmentTransaction.commit();
@@ -71,7 +80,10 @@ public class HomeFragment extends Fragment {
         FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
         fragment = new HomeFragment1();
         fragmentTransaction.replace(R.id.frame1, fragment);
+        toolbar.setTitle("Home");
         fragmentTransaction.commit();
 
+
     }
+
 }

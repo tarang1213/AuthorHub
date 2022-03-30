@@ -33,7 +33,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-                Intent i = new Intent(SplashActivity.this,CatActivity.class);
+                Intent i = new Intent(SplashActivity.this,NavHomeActivity.class);
                 startActivity(i);
                 finish();
                /* if (strEmail.equals("")){

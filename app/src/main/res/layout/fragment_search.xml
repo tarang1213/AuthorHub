@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.SearchFragment">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="#637D5EB6"
+android:orientation="vertical"
+android:padding="10dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <EditText
+        android:id="@+id/edt_search"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:background="@drawable/edt_bg"
+        android:drawableStart="@drawable/ic_baseline_search_24"
+        android:drawablePadding="20dp"
+        android:hint="search"
+        android:inputType="text"
+        android:padding="15dp"
+        android:layout_marginBottom="10dp"
+        android:singleLine="true"
+        android:textColor="#05514A"
+        android:textColorHint="#05514A" />
 
-</FrameLayout>
+<GridView
+    android:id="@+id/grid_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:horizontalSpacing="20dp"
+    android:numColumns="auto_fit"
+    android:verticalSpacing="20dp" />
+</LinearLayout>
