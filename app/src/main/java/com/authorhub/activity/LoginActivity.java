@@ -1,5 +1,6 @@
 package com.authorhub.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,8 +18,17 @@ import android.content.SharedPreferences;
 import android.widget.Toast;
 
 import com.authorhub.R;
-//import com.google.firebase.database.DatabaseReference;
-//import com.google.firebase.database.FirebaseDatabase;
+import com.authorhub.models.RegisterModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -28,27 +38,33 @@ public class LoginActivity extends AppCompatActivity {
     ImageView imgLogo;
     Button btnSignInAuthor,btnSignInUser;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-   // FirebaseDatabase firebaseDatabase;
-    //DatabaseReference databaseReference;
+    private FirebaseAuth firebaseAuth;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance("https://authorhub-750d5-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        databaseReference = firebaseDatabase.getReference("Register");
+
         edtEmail = findViewById(R.id.edt_email);
-        edtPassword=findViewById(R.id.edt_password);
+        edtPassword = findViewById(R.id.edt_password);
         btnLogin = findViewById(R.id.btn_login);
-        imgLogo  = findViewById(R.id.img_logo);
+        imgLogo = findViewById(R.id.img_logo);
         tvsignin = findViewById(R.id.tv_signin);
 
 
         tvsignin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
 
                 LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                View fpView = layoutInflater.inflate(R.layout.signinpag,null);
-                btnSignInAuthor =fpView.findViewById(R.id.btn_signInAuthor);
+                View fpView = layoutInflater.inflate(R.layout.signinpag, null);
+                btnSignInAuthor = fpView.findViewById(R.id.btn_signInAuthor);
                 btnSignInUser = fpView.findViewById(R.id.btn_signInUser);
                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                 AlertDialog alertDialog = builder.create();
@@ -59,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
                 btnSignInUser.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent i = new Intent(LoginActivity.this,SignUpUserActivity.class);
+                        Intent i = new Intent(LoginActivity.this, SignUpUserActivity.class);
                         startActivity(i);
                     }
                 });
@@ -67,62 +83,81 @@ public class LoginActivity extends AppCompatActivity {
                 btnSignInAuthor.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent i = new Intent(LoginActivity.this,SignUpAuthorActivity.class);
+                        Intent i = new Intent(LoginActivity.this, SignUpAuthorActivity.class);
                         startActivity(i);
                     }
                 });
 
 
-
             }
         });
-
-
-
-
-
 
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String strEmail = edtEmail.getText().toString();
-                String strPassword=edtPassword.getText().toString();
-                if (strEmail.equals("")){
+                String strPassword = edtPassword.getText().toString();
+                if (strEmail.equals("")) {
                     edtEmail.setError("Enter Email ID");
-//                    Toast.makeText(MainActivity.this, "Enter Email ID ", Toast.LENGTH_SHORT).show();
-                }else if(!strEmail.matches(emailPattern)){
+                 //  Toast.makeText(LoginActivity.this, " Valid Enter Email ID ", Toast.LENGTH_SHORT).show();
+                } else if (!strEmail.matches(emailPattern)) {
                     edtEmail.setError("Enter valid Email ID");
 //                    Toast.makeText(MainActivity.this, "Enter valid Email ID ", Toast.LENGTH_SHORT).show();
-                }else if(strPassword.equals("")){
+                } else if (strPassword.equals("")) {
                     edtPassword.setError("Enter password");
 //                    Toast.makeText(MainActivity.this, "Enter password ", Toast.LENGTH_SHORT).show();
-                }
-                else if(strPassword.length()<8){
+                } else if (strPassword.length() < 8) {
                     edtPassword.setError("password must have 8 length");
 //                    Toast.makeText(MainActivity.this, "Enter valid password ", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
 //                    imgLogo.setImageResource(R.drawable.icon_2);
-                  //  databaseReference.setValue("Hello");
+                    //  databaseReference.setValue("Hello");
 
 
-                    SharedPreferences sharedPreferences = getSharedPreferences("MyAPP_AUTHOR", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("KEY_PREF_EMAIL", strEmail);
-                    editor.putString("KEY_PREF_Password", strPassword);
-                    editor.commit();
+                    firebaseAuth.signInWithEmailAndPassword(strEmail, strPassword).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+
+                            if (task.isSuccessful()) {
+
+                                String strUID = firebaseAuth.getUid();
+
+                                databaseReference.child(strUID).addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                                        RegisterModel registerModel = dataSnapshot.getValue(RegisterModel.class);
+                                        String loginEmail = registerModel.getUser_email();
+
+                                        SharedPreferences sharedPreferences = getSharedPreferences("MyAPP_AUTHOR", MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putString("KEY_PREF_EMAIL", strEmail);
+                                        editor.putString("KEY_PREF_Password", strPassword);
+                                        editor.commit();
 
 
-                    Intent i = new Intent(LoginActivity.this,NavHomeActivity.class);
-                    i.putExtra("KEY_EMAIL",strEmail);
-                    startActivity(i);
+                                        // Explicit Intent
+                                        Intent i = new Intent(LoginActivity.this, NavHomeActivity.class);
+                                        i.putExtra("KEY_EMAIL", strEmail);
+                                        startActivity(i);
+                                        finish();
 
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+                            }
+                        }
+                    });
                 }
             }
         });
     }
-
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);

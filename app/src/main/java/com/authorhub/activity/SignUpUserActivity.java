@@ -1,5 +1,6 @@
 package com.authorhub.activity;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.authorhub.models.RegisterModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.authorhub.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -31,6 +39,12 @@ public class SignUpUserActivity extends AppCompatActivity {
     CircleImageView circleImageView;
     Button btnGallery,btnCamera;
 
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
+
+    FirebaseAuth firebaseAuth;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +57,9 @@ public class SignUpUserActivity extends AppCompatActivity {
         tvLogin=findViewById(R.id.tv_login);
         circleImageView = findViewById(R.id.img_DP);
 
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance("https://authorhub-750d5-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        databaseReference = firebaseDatabase.getReference("Register_User");
 
         circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,21 +163,53 @@ public class SignUpUserActivity extends AppCompatActivity {
 
                 }else if(!strNewPassword.equals(strConfirmPassword)){
                     edtConfirmPassword.setError("Confirm password does not match with new password");
-                }else{
-                    Intent i = new Intent(SignUpUserActivity.this,NavHomeActivity.class);
-                    startActivity(i);
+                }else {
+
+
+                    String strFn = edtName.getText().toString();
+                    String strLn = edtNewPassword.getText().toString();
+                    String stremail = edtEmail.getText().toString();
+                    String strPassword = edtConfirmPassword.getText().toString();
+
+
+                    firebaseAuth.createUserWithEmailAndPassword(strEmail, strPassword).addOnCompleteListener(SignUpUserActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+
+                            if (task.isSuccessful()) {
+
+
+                                String uID = firebaseAuth.getUid();
+                                RegisterModel registerModel = new RegisterModel();
+                                registerModel.setUser_id(uID);
+                                registerModel.setUser_firstName(strFn);
+                                registerModel.setUser_lastName(strLn);
+                                registerModel.setUser_email(strEmail);
+                                registerModel.setUser_password(strPassword);
+
+                                databaseReference.child(uID).setValue(registerModel);
+
+                                Intent i = new Intent(SignUpUserActivity.this, LoginActivity.class);
+                                startActivity(i);
+                                finish();
+                            }
+
+                        }
+                    });
+
+
                 }
 
             }
         });
 
-        /*tvLogin.setOnClickListener(new View.OnClickListener() {
+        tvLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(SignUpUserActivity.this,LoginActivity.class);
                 startActivity(i);
             }
-        });*/
+        });
 
 
     }

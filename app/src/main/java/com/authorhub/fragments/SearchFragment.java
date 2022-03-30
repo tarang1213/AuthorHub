@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.authorhub.R;
 import com.authorhub.activity.CatDisplayActivity;
@@ -24,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class SearchFragment extends Fragment {
 
@@ -31,6 +33,7 @@ public class SearchFragment extends Fragment {
     private ArrayList<CategoryModel> categoryModelArrayList;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
+    // SearchView searchView;
 
 
     @Nullable
@@ -42,6 +45,8 @@ public class SearchFragment extends Fragment {
         databaseReference = firebaseDatabase.getReference("Category");
         View rootview = inflater.inflate(R.layout.fragment_search, container, false);
         gridView = rootview.findViewById(R.id.grid_view);
+        // searchView = (searchView)findViewById(R.id.search);
+        // searchView.setOnQueryTextListener(this);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -64,12 +69,23 @@ public class SearchFragment extends Fragment {
 
             }
         });
+
         return rootview;
+    }
+    /*@Override
+    public boolean onQueryTextSubmit(String query) {
+
+        return false;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        getActivity().setTitle("Search");
-    }
+    public boolean onQueryTextChange(String newText) {
+        String text = newText;
+        //bookAdapter.filter(text);
+        return false;
+    }*/
+
+
+
+
 }

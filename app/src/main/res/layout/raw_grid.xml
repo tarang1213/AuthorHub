@@ -20,16 +20,27 @@
             android:layout_gravity="center"
             app:civ_circle_background_color="#000"
             android:id="@+id/img_book" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_book"
             android:text="Book"
-            android:layout_gravity="center"
             android:textSize="25sp"
             android:textColor="#0E0B0B"
             android:textStyle="bold"
             android:layout_marginTop="10dp"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/img_edit"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="right|center"
+            android:src="@drawable/ic_baseline_edit_24"/>
+    </LinearLayout>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
