@@ -8,20 +8,29 @@ android:background="#637D5EB6"
 android:orientation="vertical"
 android:padding="10dp">
 
-    <EditText
-        android:id="@+id/edt_search"
+    <!--SearchView
+        android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edt_bg"
-        android:drawableStart="@drawable/ic_baseline_search_24"
-        android:drawablePadding="20dp"
-        android:hint="search"
-        android:inputType="text"
-        android:padding="15dp"
-        android:layout_marginBottom="10dp"
-        android:singleLine="true"
-        android:textColor="#05514A"
-        android:textColorHint="#05514A" />
+        android:iconifiedByDefault="false";
+        <requestFocus />
+    </SearchView>-->
+
+
+    <!-- <EditText
+         android:id="@+id/edt_search"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="@drawable/edt_bg"
+         android:drawableStart="@drawable/ic_baseline_search_24"
+         android:drawablePadding="20dp"
+         android:hint="search"
+         android:inputType="text"
+         android:padding="15dp"
+         android:layout_marginBottom="10dp"
+         android:singleLine="true"
+         android:textColor="#05514A"
+         android:textColorHint="#05514A" />-->
 
 <GridView
     android:id="@+id/grid_view"

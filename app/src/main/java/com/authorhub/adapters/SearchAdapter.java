@@ -6,9 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.authorhub.R;
+import com.authorhub.activity.BookDisplayActivity;
 import com.authorhub.activity.CatDetailsActivity;
 import com.authorhub.models.CategoryModel;
 import com.bumptech.glide.Glide;
@@ -53,11 +55,10 @@ public class SearchAdapter extends BaseAdapter {
         String url = categoryModelArrayList.get(position).getCat_url();
         Glide.with(context).load(url).into(imgBook);
         TextView tvBook = convertView.findViewById(R.id.tv_book);
-        //imgBook.setImageResource(categoryModelArrayList.get(position).getImgBook());
-        tvBook.setText(categoryModelArrayList.get(position).getCat_name());
-        convertView.setOnClickListener(new View.OnClickListener() {
+        ImageView imgEdt = convertView.findViewById(R.id.img_edit);
+        imgEdt.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 String url = categoryModelArrayList.get(position).getCat_url();
                 String catName = categoryModelArrayList.get(position).getCat_name();
                 String catDescription = categoryModelArrayList.get(position).getCat_description();
@@ -69,7 +70,18 @@ public class SearchAdapter extends BaseAdapter {
                 i.putExtra("KEY_DESC",catDescription);
                 i.putExtra("KEY_URL",url);
                 context.startActivity(i);
+
             }
+        });
+        //imgBook.setImageResource(categoryModelArrayList.get(position).getImgBook());
+        tvBook.setText(categoryModelArrayList.get(position).getCat_name());
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(context, BookDisplayActivity.class);
+                context.startActivity(i);
+                          }
         });
 
 

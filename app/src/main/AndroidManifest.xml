@@ -18,6 +18,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AuthorHub">
         <activity
+            android:name=".activity.BookMoreDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.BookDisplayActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.AuthorDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.BookDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.CatDetailsActivity"
             android:exported="false" />
         <activity
