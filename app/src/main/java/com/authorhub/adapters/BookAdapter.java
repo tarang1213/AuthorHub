@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.authorhub.R;
@@ -45,9 +46,9 @@ public class BookAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater layoutInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        convertView = layoutInflater.inflate(R.layout.raw_list, null);
+        convertView = layoutInflater.inflate(R.layout.raw_book, null);
 
-        CircleImageView imgBook = convertView.findViewById(R.id.img_book);
+        ImageView imgBook = convertView.findViewById(R.id.img_book);
         TextView tvBook = convertView.findViewById(R.id.tv_book);
         imgBook.setImageResource(bookModelArrayList.get(position).getImgBook());
         tvBook.setText(bookModelArrayList.get(position).getStrBook());

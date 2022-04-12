@@ -50,5 +50,13 @@ public class BookDetailsModel {
         BookCat = bookCat;
     }
 
-    String Sid,BookName,BookImage,AuthorName,BookDesc,BookCat;
+    public String getAuthorImg() {
+        return AuthorImg;
+    }
+
+    public void setAuthorImg(String authorImg) {
+        AuthorImg = authorImg;
+    }
+
+    String Sid,BookName,BookImage,AuthorName,BookDesc,BookCat,AuthorImg;
 }

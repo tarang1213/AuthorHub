@@ -15,12 +15,13 @@
         <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/layout/activity_author_details.xml" value="0.25" />
         <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/layout/activity_book_details.xml" value="0.25" />
         <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/layout/activity_book_display.xml" value="0.2" />
-        <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/layout/activity_book_more_details.xml" value="0.25" />
+        <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/layout/activity_book_more_details.xml" value="0.11515151515151516" />
         <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/layout/activity_cat.xml" value="0.209375" />
         <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/layout/activity_cat_details.xml" value="0.25" />
         <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/layout/activity_cat_display.xml" value="0.1953125" />
         <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/layout/activity_catdetails.xml" value="0.15989583333333332" />
         <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/layout/activity_nav_home.xml" value="0.12685185185185185" />
         <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/layout/activity_sign_up_author.xml" value="0.18425925925925926" />
         <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/layout/activity_sign_up_user.xml" value="0.18425925925925926" />
@@ -34,7 +35,7 @@
         <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/layout/fragment_search.xml" value="0.2" />
         <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/layout/item_layout.xml" value="0.25" />
         <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/layout/nav_header_nav_home.xml" value="0.12685185185185185" />
-        <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/layout/raw_book.xml" value="0.4" />
+        <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/layout/raw_book.xml" value="0.2" />
         <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/layout/raw_dp.xml" value="0.209375" />
         <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/layout/raw_grid.xml" value="0.25" />
         <entry key="..\:/Users/PRACHIPATEL/AndroidStudioProjects/AuthorHub/app/src/main/res/layout/raw_list.xml" value="0.17435897435897435" />

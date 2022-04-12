@@ -28,10 +28,10 @@ public class HomeFragment1 extends Fragment {
 
     ListView listView;
 
-    String[] strBook = {"Book 1", "Book 2", "Book 3", "Book 4", "Book 5", "Book 6", "Book 7", "Book 8"};
+    String[] strBook = {"Jurassic Park", "The Princess Bride", "Batman: The Killing Joke", "The Two Towers", "Lord of the Flies", "One for the Money", "The Cat in the Hat", "Aurora and God"};
 
-    int[] imgBook = {R.drawable.ic_home, R.drawable.ic_home, R.drawable.ic_home,
-            R.drawable.ic_home, R.drawable.ic_home, R.drawable.ic_home, R.drawable.ic_home, R.drawable.ic_home};
+    int[] imgBook = {R.drawable.book1, R.drawable.book2, R.drawable.book3,
+            R.drawable.book4, R.drawable.book5, R.drawable.book6, R.drawable.book7, R.drawable.book8};
 
     ArrayList<BookModel> bookModelArrayList;
 
@@ -40,7 +40,7 @@ public class HomeFragment1 extends Fragment {
     private TabLayout tabLayout;
 
     /*Slider Code*/
-    String strImag[]= {"bithday","anniversary gift hamper"," couple hamper","gift box","surpise"};
+    String strImag[]= {"book","book","book","book","book"};
 
     int imgData[] = {R.drawable.slideimg1,R.drawable.slideimg2,
             R.drawable.slideimg3,R.drawable.slideimg4,R.drawable.slidimg5};
