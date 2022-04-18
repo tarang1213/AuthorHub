@@ -9,23 +9,24 @@
 
 
     <ImageView
-        android:layout_width="68dp"
-        android:layout_height="68dp"
+        android:id="@+id/img_book"
+        android:layout_width="106dp"
+        android:layout_height="130dp"
         app:civ_border_color="#fff"
         app:civ_border_width="2dp"
-        app:civ_circle_background_color="#000"
-        android:id="@+id/img_book" />
+        app:civ_circle_background_color="#000" />
 
 
     <TextView
+        android:id="@+id/tv_book"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_book"
-        android:text="Book"
-        android:textSize="30sp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Book "
         android:textColor="#fff"
-        android:textStyle="bold"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="10dp"/>
+        android:textSize="30sp"
+        android:padding="10dp"
+        android:textStyle="bold" />
 
 </LinearLayout>

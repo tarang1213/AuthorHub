@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.content.SharedPreferences;
 
 import com.authorhub.R;
+import com.authorhub.fragments.SearchFragment;
 import com.authorhub.utils.GifImageView;
 
 
@@ -42,7 +43,7 @@ public class SplashActivity extends AppCompatActivity {
                     finish();
 
                 }else {
-                    Intent i = new Intent(SplashActivity.this,NavHomeActivity.class);
+                    Intent i = new Intent(SplashActivity.this, CatActivity.class);
                     startActivity(i);
                     finish();
 

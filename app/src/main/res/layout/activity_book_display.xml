@@ -6,9 +6,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activity.BookDisplayActivity"
     android:paddingHorizontal="5dp"
-    android:background="#637D5EB6">
+    android:background="#9EF48A94">
 <ListView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/list_view" />
+    android:id="@+id/list_view"
+    android:layout_margin="10dp" />
 </RelativeLayout>

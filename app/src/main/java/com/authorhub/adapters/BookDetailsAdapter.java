@@ -59,6 +59,16 @@ public class BookDetailsAdapter extends BaseAdapter {
         TextView tvBook = convertView.findViewById(R.id.tv_book);
        // imgBook.setImageResource(Integer.parseInt(bookDetailsModelArrayList.get(position).getBookImage()));
         tvBook.setText(bookDetailsModelArrayList.get(position).getBookName());
+       // tvBook.setText(bookDetailsModelArrayList.get(position).getAuthorName());
+
+       // CircleImageView imgauthor = convertView.findViewById(R.id.img_author);
+      //  String url = bookDetailsModelArrayList.get(position).getAuthorImg();
+        //Glide.with(context).load(url).into(imgauthor);
+        //TextView tvBook = convertView.findViewById(R.id.tv_book);
+
+
+
+
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +83,6 @@ public class BookDetailsAdapter extends BaseAdapter {
                 i.putExtra("KEY_NAME",BookName);
                 i.putExtra("KEY_DESC",bookDesc);
                 i.putExtra("KEY_BOOKIMG",BookImage);
-
                 i.putExtra("KEY_AUTHOR",Athorname);
 
                 context.startActivity(i);

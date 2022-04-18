@@ -30,7 +30,7 @@ public class BookMoreDetailsActivity extends AppCompatActivity {
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
-    TextView bookName,bookDesc;
+    TextView bookName,bookDesc,authorname;
     ImageView bookImg;
 
     @Override
@@ -44,6 +44,7 @@ public class BookMoreDetailsActivity extends AppCompatActivity {
         bookImg=findViewById(R.id.img_book);
         bookName=findViewById(R.id.bookName);
         bookDesc=findViewById(R.id.bookDesc);
+        authorname=findViewById(R.id.authorname);
 
 
         Intent i = getIntent();
@@ -51,10 +52,13 @@ public class BookMoreDetailsActivity extends AppCompatActivity {
         String strBookImg=i.getStringExtra("KEY_BOOKIMG");
         String strBookName = i.getStringExtra("KEY_NAME");
         String strBookDescription = i.getStringExtra("KEY_DESC");
+        String  strauthorname =i.getStringExtra("KEY_AUTHOR");
 
         Glide.with(this).load(strBookImg).into(bookImg);
-        bookName.setText(strBookName);
-        bookDesc.setText(strBookDescription);
+        bookName.setText("Book Name:\n"+strBookName);
+        bookDesc.setText("Description:\n"+strBookDescription);
+        //Glide.with(this).load(strauthorimage).into(authorimage);
+        authorname.setText("Author Name:\n"+strauthorname);
     }
 }
 
